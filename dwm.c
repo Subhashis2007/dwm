@@ -283,6 +283,8 @@ static const char autostartblocksh[] = "autostart_blocking.sh";
 static const char autostartsh[] = "autostart.sh";
 static const char broken[] = "broken";
 static const char dwmdir[] = "dwm";
+static const char sucklessdir[] = ".config/suckless";
+static const char dwmscriptsdir[] = "dwm/scripts";
 static const char localshare[] = ".local/share";
 static char stext[1024];
 static int screen;
@@ -1759,7 +1761,7 @@ runautostart(void)
 		return;
 
 	/* if $XDG_DATA_HOME is set and not empty, use $XDG_DATA_HOME/dwm,
-	 * otherwise use ~/.local/share/dwm as autostart script directory
+	 * otherwise use ~/.config/suckless/dwm as autostart script directory
 	 */
 	xdgdatahome = getenv("XDG_DATA_HOME");
 	if (xdgdatahome != NULL && *xdgdatahome != '\0') {
@@ -1772,14 +1774,15 @@ runautostart(void)
 		}
 	} else {
 		/* space for path segments, separators and nul */
-		pathpfx = ecalloc(1, strlen(home) + strlen(localshare)
-		                     + strlen(dwmdir) + 3);
+		pathpfx = ecalloc(1, strlen(home) + strlen(sucklessdir)
+		                     + strlen(dwmscriptsdir) + 3);
 
-		if (sprintf(pathpfx, "%s/%s/%s", home, localshare, dwmdir) < 0) {
+		if (sprintf(pathpfx, "%s/%s/%s", home, sucklessdir, dwmscriptsdir) < 0) {
 			free(pathpfx);
 			return;
 		}
 	}
+
 
 	/* check if the autostart script directory exists */
 	if (! (stat(pathpfx, &sb) == 0 && S_ISDIR(sb.st_mode))) {
