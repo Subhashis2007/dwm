@@ -18,15 +18,16 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 5;        /* 2 is the default spacing around the bar's font */
 static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=10" };
 static const char dmenufont[]       =   "JetBrainsMono Nerd Font:size=10";
-static const char col_gray1[]       = "#282828";
-static const char col_gray2[]       = "#504945";
-static const char col_gray3[]       = "#bdae93";
-static const char col_gray4[]       = "#ebdbb2";
-static const char col_cyan[]        = "#cc241d";
+static const char col_gray1[]       = "#2E3440"; // Background
+static const char col_gray2[]       = "#3B4252"; // Selection Background
+static const char col_gray3[]       = "#4C566A"; // Comment
+static const char col_gray4[]       = "#D8DEE9"; // Foreground
+static const char col_cyan[]        = "#88C0D0"; // Keyword
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm]  = { col_gray3, col_gray1,  col_gray1  },
-	[SchemeSel] = { col_gray4, col_gray2, col_gray3 },
+	[SchemeNorm]  = { col_gray4, col_gray1,  col_gray1  },
+	[SchemeSel] = { col_gray4, col_gray2, col_cyan },
 };
 
 /* tagging */
@@ -76,7 +77,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "kitty", NULL };
-static const char *mybrowser[] = {"firefox", NULL};
+static const char *mybrowser[] = {"waterfox", NULL};
 static const char *myfm[] = {"pcmanfm", NULL};
 static const char *mute[] = { "bash", "/home/subhashis/.config/scripts/volume.sh", "--pw-mute", NULL };
 static const char *incv[] = {"bash", "/home/subhashis/.config/scripts/volume.sh", "--pw-incvol", NULL};
