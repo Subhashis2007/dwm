@@ -27,12 +27,11 @@ static const char col_cyan[]        = "#88C0D0"; // Keyword
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm]  = { col_gray4, col_gray1,  col_gray1  },
-	[SchemeSel] = { col_gray4, col_gray2, col_cyan },
+	[SchemeSel] = { col_gray4, col_gray3, col_cyan },
 };
 
 /* tagging */
-static const char *tags[] = { "   ", "  ", "  ", "   ", "   ", " 󰂮 "};
-
+static char *tags[] = {"I", "II", "III", "IV", "V"};
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class

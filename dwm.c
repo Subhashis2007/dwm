@@ -1761,7 +1761,7 @@ runautostart(void)
 		return;
 
 	/* if $XDG_DATA_HOME is set and not empty, use $XDG_DATA_HOME/dwm,
-	 * otherwise use ~/.config/suckless/dwm as autostart script directory
+	 * otherwise use ~/.config/suckless/dwm/scripts as autostart script directory
 	 */
 	xdgdatahome = getenv("XDG_DATA_HOME");
 	if (xdgdatahome != NULL && *xdgdatahome != '\0') {
