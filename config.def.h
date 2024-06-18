@@ -18,16 +18,21 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 5;        /* 2 is the default spacing around the bar's font */
 static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=10" };
 static const char dmenufont[]       =   "JetBrainsMono Nerd Font:size=10";
-static const char col_gray1[]       = "#2E3440"; // Background
-static const char col_gray2[]       = "#3B4252"; // Selection Background
-static const char col_gray3[]       = "#4C566A"; // Comment
-static const char col_gray4[]       = "#D8DEE9"; // Foreground
-static const char col_cyan[]        = "#88C0D0"; // Keyword
+//Colors
+static const char norm_fg[] = "#bcb4b9";
+static const char norm_bg[] = "#02131A";
+static const char norm_border[] = "#837d81";
+static const char sel_fg[] = "#bcb4b9";
+static const char sel_bg[] = "#3C4349";
+static const char sel_border[] = "#bcb4b9";
+static const char urg_fg[] = "#bcb4b9";
+static const char urg_bg[] = "#653945";
+static const char urg_border[] = "#653945";
 
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm]  = { col_gray4, col_gray1,  col_gray1  },
-	[SchemeSel] = { col_gray4, col_gray3, col_cyan },
+    /*               fg           bg         border                         */
+    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
+    [SchemeSel]  = { sel_fg,      sel_bg,    sel_border },  // the focused win
 };
 
 /* tagging */
@@ -80,8 +85,9 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_cyan, "-sf", col_gray1, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", norm_bg, "-nf", norm_fg, "-sb", sel_bg, "-sf", sel_fg, NULL };
 static const char *termcmd[]  = { "kitty", NULL };
+static const char *termcmd2[]  = { "alacritty", NULL };
 static const char *mybrowser[] = {"waterfox", NULL};
 static const char *myfm[] = {"pcmanfm", NULL};
 static const char *mute[] = { "bash", "/home/subhashis/.config/scripts/volume.sh", "--pw-mute", NULL };
@@ -95,6 +101,7 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd2 } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_Left,   focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_Right,  focusstack,     {.i = -1 } },
