@@ -73,13 +73,13 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", gray, "-nf", blue, "-sb", pink, "-sf", gray, NULL };
-static const char *termcmd[]  = { "kitty", NULL };
-static const char *termcmd2[]  = { "alacritty", NULL };
-static const char *mybrowser[] = {"waterfox", NULL};
+static const char *termcmd2[]  = { "kitty", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
+static const char *mybrowser[] = {"brave", NULL};
 static const char *myfm[] = {"pcmanfm", NULL};
-static const char *mute[] = { "bash", "/home/subhashis/.config/scripts/volume.sh", "--pw-mute", NULL };
-static const char *incv[] = {"bash", "/home/subhashis/.config/scripts/volume.sh", "--pw-incvol", NULL};
-static const char *decv[] = {"bash", "/home/subhashis/.config/scripts/volume.sh", "--pw-decvol", NULL};
+static const char *mute[] = { "bash", "/home/smooth/.config/scripts/volume.sh", "--pw-mute", NULL };
+static const char *incv[] = {"bash",  "/home/smooth/.config/scripts/volume.sh", "--pw-incvol", NULL};
+static const char *decv[] = {"bash",  "/home/smooth/.config/scripts/volume.sh", "--pw-decvol", NULL};
 static const char *ss[] = {"flameshot", "gui", NULL};
 static const char *ssfull[] = {"flameshot", "full", NULL};
 
